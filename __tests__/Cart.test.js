@@ -20,7 +20,7 @@ const mocks = [
   },
   {
     request: { query: LOCAL_STATE_QUERY },
-    result: { data: { cartopen: true } }
+    result: { data: { cartOpen: true } }
   }
 ];
 
