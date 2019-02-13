@@ -44,6 +44,7 @@ const Pagination = props => {
               </a>
             </Link>
             <p>
+              Page {currPage} of <span className="totalPages">{pages}</span>
             </p>
             <p>{count} items</p>
             <Link
