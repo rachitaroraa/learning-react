@@ -21,9 +21,10 @@ class ResetPassReq extends Component {
   render() {
     return (
       <Mutation mutation={RESET_REQUEST_MUTATION} variables={this.state}>
-        {(requestReset, { loading, error }) => {
+        {(requestReset, { loading, error, called }) => {
           return (
             <Form
+              data-test="form"
               onSubmit={async e => {
                 e.preventDefault();
                 await requestReset();
@@ -31,6 +32,9 @@ class ResetPassReq extends Component {
               }}
             >
               <Error error={error} />
+              {!error && !loading && called && (
+                <p>Success! Check your email for a reset link!</p>
+              )}
               <fieldset>
                 <label htmlFor="email">
                   Email
@@ -55,3 +59,4 @@ class ResetPassReq extends Component {
 }
 
 export default ResetPassReq;
+export { RESET_REQUEST_MUTATION };
