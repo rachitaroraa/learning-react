@@ -23,7 +23,7 @@ exports[`<Item/> renders and matches the snapshot 1`] = `
     </Link>
   </Title>
   <PriceTag>
-    $50
+    $40
   </PriceTag>
   <p>
     This item is really cool!

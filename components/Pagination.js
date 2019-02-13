@@ -44,7 +44,6 @@ const Pagination = props => {
               </a>
             </Link>
             <p>
-              Page {currPage} of {pages}
             </p>
             <p>{count} items</p>
             <Link
@@ -54,7 +53,7 @@ const Pagination = props => {
                 query: { page: currPage + 1 }
               }}
             >
-              <a className="prev" aria-disabled={currPage >= pages}>
+              <a className="next" aria-disabled={currPage >= pages}>
                 Next →
               </a>
             </Link>
@@ -66,3 +65,4 @@ const Pagination = props => {
 };
 
 export default Pagination;
+export { PAGINATION_QUERY };

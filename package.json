@@ -8,8 +8,8 @@
     "build": "next build",
     "start": "next start",
     "test": "NODE_ENV=test jest --watch",
-    "test-win": "SET NODE_ENV=test&& jest --watch",
-    "heroku-postbuild": "next build"
+    "heroku-postbuild": "next build",
+    "test-win": "SET NODE_ENV=test&& jest --watch"
   },
   "author": "",
   "license": "ISC",
@@ -49,15 +49,13 @@
   },
   "jest": {
     "setupTestFrameworkScriptFile": "<rootDir>/jest.setup.js",
-    "testEnvironment": "node",
     "testPathIgnorePatterns": [
       "<rootDir>/.next/",
       "<rootDir>/node_modules/"
     ],
     "transform": {
       "\\.(gql|graphql)$": "jest-transform-graphql",
-      ".*": "babel-jest",
-      "^.+\\.js?$": "babel-jest"
+      ".*": "babel-jest"
     }
   },
   "//": "This is our babel config, I prefer this over a .babelrc file",
