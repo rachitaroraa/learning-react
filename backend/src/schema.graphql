@@ -1,0 +1,54 @@
+# import * from './generated/prisma.graphql'
+
+type SuccessMessage {
+  message: String
+}
+type User implements Node {
+  id: ID!
+  name: String!
+  email: String!
+  # password: String!
+  # resetToken: String
+  # resetTokenExpiry: Float
+  permission: [Permission!]!
+  cart: [CartItem!]!
+}
+type Mutation {
+  createItem(
+    title: String
+    description: String
+    price: Int
+    image: String
+    largeImage: String
+  ): Item!
+  updateItem(id: ID!, title: String, description: String, price: Int): Item
+  deleteItem(id: ID!): Item
+  signUp(name: String!, email: String!, password: String!): User!
+  signIn(email: String!, password: String!): User!
+  signOut: SuccessMessage
+  requestReset(email: String!): SuccessMessage
+  resetPassword(
+    resetToken: String!
+    password: String!
+    confirmPassword: String!
+  ): User
+  updatePermission(permission: [Permission], userId: ID!): User
+  addToCart(id: ID!): CartItem
+  deleteCartItem(id: ID!): CartItem
+  createOrder(token: String!): Order!
+}
+
+type Query {
+  items(
+    where: ItemWhereInput
+    orderBy: ItemOrderByInput
+    skip: Int
+    first: Int
+  ): [Item]!
+  item(where: ItemWhereUniqueInput!): Item
+  itemsConnection(where: ItemWhereInput): ItemConnection!
+  me: User
+  users: [User]!
+  order(id: ID!): Order
+  orders(orderBy: OrderOrderByInput): [Order]!
+}
